@@ -1,0 +1,13 @@
+.Character {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Character__info{
+    box-shadow: 4px 2px 18px rgb(0 0 0 / 32%);
+    margin: 17px;
+    padding: 9px;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+}
