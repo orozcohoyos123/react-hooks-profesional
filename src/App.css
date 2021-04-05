@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  background-color: white;
+  transition: background-color 0.5s ease;
+}
+
+.App--dark {
+  background-color: #282c34;
+  color: white;
+  transition: background-color 0.5s ease;
 }
 
 .App-logo {

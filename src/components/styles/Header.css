@@ -1,0 +1,14 @@
+.Header button{
+    color: #808080;
+    background: transparent;
+    border: 1px solid #CCCCCC;
+    padding: 1em;
+    font-size: 1em;
+    border-radius: 25px;
+    font-weight: bold;
+    outline: none;
+}
+
+.Header__button--dark{
+    color: white !important;
+}

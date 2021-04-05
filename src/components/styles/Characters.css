@@ -4,10 +4,31 @@
     justify-content: center;
 }
 
-.Character__info{
+.Character__container{
     box-shadow: 4px 2px 18px rgb(0 0 0 / 32%);
     margin: 17px;
-    padding: 9px;
     border-radius: 5px;
     border: 1px solid #CCC;
+}
+
+.Character__info{
+    text-align: left;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.Character__title{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.Character__status{
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    color: #AAA;
+}
+
+.Character__origin{
+    color:#808080;
 }

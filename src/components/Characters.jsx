@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './styles/Characters.css';
 
-const Characters = () => {
+const Characters = (props) => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
@@ -13,9 +13,13 @@ const Characters = () => {
   return (
     <div className="Character">
       {characters.map((character) => (
-        <div className="Character__info">
-          <h2>{character.name}</h2>
+        <div className="Character__container">
           <img src={character.image} alt={character.name} />
+          <div className="Character__info">
+            <label className="Character__title">{character.name}</label>
+            <label className="Character__status">{character.status}</label>
+            <label className="Character__origin">{character.origin.name}</label>
+          </div>
         </div>
       ))}
     </div>
