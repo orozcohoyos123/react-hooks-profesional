@@ -13,7 +13,7 @@ const Characters = (props) => {
   return (
     <div className="Character">
       {characters.map((character) => (
-        <div className="Character__container">
+        <div key={character.id} className="Character__container">
           <img src={character.image} alt={character.name} />
           <div className="Character__info">
             <label className="Character__title">{character.name}</label>
