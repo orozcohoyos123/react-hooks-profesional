@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, useMemo } from "react";
+import React, { useState, useEffect, useReducer, useMemo, useRef } from "react";
 import './styles/Characters.css';
 
 const initialState = {
@@ -29,6 +29,7 @@ const Characters = (props) => {
   const [characters, setCharacters] = useState([]);
   const [favorites, dispatch] = useReducer(favoriteReducer, initialState);
   const [search, setSearch] = useState('');
+  const searchInput = useRef(null);
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character/")
@@ -48,8 +49,9 @@ const Characters = (props) => {
     )
   }
 
-  const handleSearch = (event) => {
-    setSearch(event.target.value)
+  const handleSearch = () => {
+    //setSearch(event.target.value) //es posible trabajar con el event, pero a medida que crece el formulario se vuelve tedioso
+    setSearch(searchInput.current.value)
   }
 
   /* 
@@ -83,7 +85,11 @@ const Characters = (props) => {
       </div>
       <hr/>
       <div className="Search">
-        <input type="text" value={search} onChange={handleSearch} />
+        <input 
+          type="text" 
+          value={search} 
+          onChange={handleSearch}
+          ref={searchInput} />
       </div>
       <hr/>
       <div className="Character">
