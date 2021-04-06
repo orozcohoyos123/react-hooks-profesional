@@ -28,6 +28,7 @@ const favoriteReducer = (state, action) => {
 const Characters = (props) => {
   const [characters, setCharacters] = useState([]);
   const [favorites, dispatch] = useReducer(favoriteReducer, initialState);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character/")
@@ -46,6 +47,23 @@ const Characters = (props) => {
       {type: 'REMOVE_FROM_FAVORITE', payload: favorite}
     )
   }
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value)
+  }
+
+  /* 
+  const filteredUsers = characters.filter(user => {
+    return user.name.toLowerCase().includes(search.toLocaleLowerCase());
+  }) 
+  */
+
+  const filteredUsers = useMemo(() => 
+    characters.filter(user => {
+      return user.name.toLowerCase().includes(search.toLocaleLowerCase());
+    }),
+    [characters, search] 
+  );
   
   return (
     <div className="Container">
@@ -64,8 +82,12 @@ const Characters = (props) => {
         ))}
       </div>
       <hr/>
+      <div className="Search">
+        <input type="text" value={search} onChange={handleSearch} />
+      </div>
+      <hr/>
       <div className="Character">
-        {characters.map((character) => (
+        {filteredUsers.map((character) => (
           <div key={character.id} className="Character__container">
             <img src={character.image} alt={character.name} />
             <div className="Character__info">
