@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useReducer, useMemo, useRef } from "react";
+import React, { useState, useEffect, useReducer, useMemo, useRef, useCallback } from "react";
+import Search from './Search';
 import './styles/Characters.css';
 
 const initialState = {
@@ -49,10 +50,15 @@ const Characters = (props) => {
     )
   }
 
-  const handleSearch = () => {
+  /*   const handleSearch = () => {
     //setSearch(event.target.value) //es posible trabajar con el event, pero a medida que crece el formulario se vuelve tedioso
     setSearch(searchInput.current.value)
   }
+ */
+
+  const handleSearch = useCallback(() => {
+    setSearch(searchInput.current.value)
+  }, [])
 
   /* 
   const filteredUsers = characters.filter(user => {
@@ -84,13 +90,7 @@ const Characters = (props) => {
         ))}
       </div>
       <hr/>
-      <div className="Search">
-        <input 
-          type="text" 
-          value={search} 
-          onChange={handleSearch}
-          ref={searchInput} />
-      </div>
+      <Search search={search} searchInput={searchInput} handleSearch={handleSearch} />
       <hr/>
       <div className="Character">
         {filteredUsers.map((character) => (
