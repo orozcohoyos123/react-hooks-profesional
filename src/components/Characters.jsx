@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useMemo } from "react";
 import './styles/Characters.css';
 
 const initialState = {
